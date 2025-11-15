@@ -1,0 +1,41 @@
+## Build results
+bin/
+obj/
+out/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+
+## Visual Studio cache/options
+.vs/
+*.user
+*.userosscache
+*.suo
+*.rsuser
+
+## Visual Studio Code
+.vscode/
+.history/
+*.code-workspace
+
+## .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## ASP.NET temp files
+App_Data/
+App_GlobalResources/
+App_LocalResources/
+App_Browsers/
+App_Code/
+
+## NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+*.nuget.props
+*.nu*
+*.sln
+.DS_Store

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Form.Core/Form.Core.csproj" />
+    <ProjectReference Include="../Form.Data/Form.Data.csproj" />
+    <ProjectReference Include="../Form.Domain/Form.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
