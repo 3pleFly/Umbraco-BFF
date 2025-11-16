@@ -48,7 +48,14 @@ public class UmbracoService(IHttpClientFactory httpClientFactory)
             if (path == null)
                 throw new ArgumentException("Missing path value");
 
-            var parentKey = path[..path.LastIndexOf("/")];
+            var index = path.LastIndexOf("/");
+            if (index == -1)
+            {
+                children.Add(node);
+                continue;
+            }
+
+            var parentKey = path[..index];
 
             nodeMap[path] = node;
             if (nodeMap.TryGetValue(parentKey, out var parent))
