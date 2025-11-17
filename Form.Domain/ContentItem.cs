@@ -8,5 +8,5 @@ public class ContentItem
     public DateTime CreateDate { get; set; }
     public DateTime UpdateDate { get; set; }
     public required object Route { get; set; }
-    public Dictionary<string, object> Properties { get; set; } = [];
+    public Dictionary<string, object?>? Properties { get; set; } = [];
 }

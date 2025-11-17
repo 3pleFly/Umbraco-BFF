@@ -2,33 +2,12 @@ using System.Text.Json;
 
 namespace Form.Domain;
 
-public interface ICmsContent
-{
-    public string ContentType { get; set; }
-}
-
-public class CmsNode<T> where T : ICmsContent
-{
-    private CmsNode() { }
-    public T Content { get; set; } = default!;
-    public List<CmsNode<T>> Children { get; set; } = [];
-
-    public static CmsNode<T> CreateNode(T content, List<CmsNode<T>>? children = null)
-    {
-        return new CmsNode<T>
-        {
-            Content = content,
-            Children = children ?? []
-        };
-    }
-}
-
 public class CmsNode
 {
     private CmsNode() { }
-    public Dictionary<string, object> Content { get; set; } = [];
+    public Dictionary<string, object?> Content { get; set; } = [];
     public List<CmsNode> Children { get; set; } = [];
-    public static CmsNode CreateNode(string contentType, Dictionary<string, object>? properties = null, List<CmsNode>? children = null)
+    public static CmsNode CreateNode(string contentType, Dictionary<string, object?>? properties = null, List<CmsNode>? children = null)
     {
         var node = new CmsNode();
 
@@ -52,7 +31,7 @@ public class CmsNode
 
         var contentType = element.GetProperty("contentType").Deserialize<string>();
         var jsonProperties = element.GetProperty("properties");
-        var properties = new Dictionary<string, object>();
+        var properties = new Dictionary<string, object?>();
 
         foreach (var prop in jsonProperties.EnumerateObject())
         {
@@ -63,7 +42,8 @@ public class CmsNode
             }
             else
             {
-                properties[prop.Name] = prop.Value.ValueKind == JsonValueKind.Null ? null : prop.Value.Deserialize<object>();
+                var isNull = prop.Value.ValueKind == JsonValueKind.Null;
+                properties[prop.Name] = isNull ? default: prop.Value.Deserialize<object>();
             }
         }
 
